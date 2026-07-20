@@ -1,5 +1,9 @@
-import { app } from "./server.js";
-import { pool } from "../src/db.js";
+import express from "express";
+import "dotenv/config";
+
+export const app = express();
+
+import { dbPool } from "./db.js";
 
 app.get("/", (req, res) => {
   res.json({

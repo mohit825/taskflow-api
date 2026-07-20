@@ -1,7 +1,6 @@
 import { Pool } from "pg";
-import "dotenv/config";
 
-export const pool = new Pool({
+export const dbPool = new Pool({
   user: process.env.DATABASE_USER, // Your pgAdmin username
   host: process.env.DATABASE_HOST, // Your server host
   database: process.env.DATABASE, // Your specific database name
@@ -9,7 +8,7 @@ export const pool = new Pool({
   port: process.env.DATABASE_PORT, // Your database port
 });
 
-pool.connect((err, client, release) => {
+dbPool.connect((err, client, release) => {
   if (err) {
     return console.error("Error acquiring client", err.stack);
   }

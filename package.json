@@ -2,11 +2,11 @@
   "name": "taskflow-api",
   "version": "1.0.0",
   "description": "Taskflow-API",
-  "main": "app.js",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./src/app.js"
+    "dev": "nodemon ./src/server.js"
   },
   "repository": {
     "type": "git",
