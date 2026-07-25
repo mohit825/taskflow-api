@@ -18,3 +18,5 @@
 ### Ticket 003
 
 - Will create Controller, Service and route for user.
+
+- The request will start from app.js --> then go to specific routes --> then express router will guide it through --> specific controller
