@@ -14,3 +14,7 @@
 - CONSTRAINTS are the rule enforced to the table, which can have PRIMARY KEY which tells us the uniquness among the data and which will be non-nullable, and similarly FOREIGN KEY is something which tells us the column which is PRIMARY KEY to other table and used to make relation in table.
 
 - TIMESTAMPTZ converts the time to UTC and when queried back it converts to time as per database, this also factors day-light savings as well.
+
+### Ticket 003
+
+- Will create Controller, Service and route for user.

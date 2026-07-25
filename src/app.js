@@ -1,12 +1,9 @@
 import express from "express";
 import "dotenv/config";
+import globalRoutes from "./routes/globalRoutes.js";
 
 export const app = express();
 
 import { dbPool } from "./db.js";
 
-app.get("/", (req, res) => {
-  res.json({
-    message: "TaskFlow API is running",
-  });
-});
+app.use("/", globalRoutes);
