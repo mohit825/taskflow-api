@@ -1,11 +1,9 @@
 import express from "express";
 import "dotenv/config";
-import globalRoutes from "./routes/globalRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
+import globalRoutes from "./routes/global.routes.js";
+import userRoutes from "./routes/user.routes.js";
 
 export const app = express();
-
-import { dbPool } from "./db.js";
 
 app.use("/", globalRoutes);
 app.use("/user", userRoutes);
