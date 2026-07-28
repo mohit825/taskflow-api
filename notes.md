@@ -22,3 +22,5 @@
 - The request will start from app.js --> then go to specific routes --> then express router will guide it through --> specific controller
 
 - If we have to pass parameters to our queries, it will be good to use parameterized query since it avoid sql injection vulnerabilities.
+
+- `Returning *` in pg will return the current added row in the query (for INSERT), but can be used with SELeCT, UPDATE, DELETE instread of `*` we can add specfic column too
