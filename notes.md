@@ -20,3 +20,5 @@
 - Will create Controller, Service and route for user.
 
 - The request will start from app.js --> then go to specific routes --> then express router will guide it through --> specific controller
+
+- If we have to pass parameters to our queries, it will be good to use parameterized query since it avoid sql injection vulnerabilities.
