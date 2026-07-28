@@ -24,3 +24,9 @@
 - If we have to pass parameters to our queries, it will be good to use parameterized query since it avoid sql injection vulnerabilities.
 
 - `Returning *` in pg will return the current added row in the query (for INSERT), but can be used with SELeCT, UPDATE, DELETE instread of `*` we can add specfic column too
+
+### Ticket 004 Validation
+
+- Added `zod` as Input validation library.
+
+- Used middleware for validating inputs.

@@ -1,4 +1,4 @@
-import { dbPool } from "../db.js";
+import { dbPool } from "../../db.js";
 
 const addUserInDB = async (user) => {
   try {
