@@ -6,12 +6,13 @@ export const registerUserValidation = (req, res, next) => {
     email: z.email(),
     password_hash: z.string(),
   });
-
-  if (!registeredUserSchema.safeParse(req.body).success) {
+  let result = registeredUserSchema.safeParse(req.body);
+  if (!result.success) {
     res.status(400).json({
       status: "Failed",
-      message: "Please chek input",
+      message: "Please chek input for ",
     });
+  } else {
+    next();
   }
-  next();
 };

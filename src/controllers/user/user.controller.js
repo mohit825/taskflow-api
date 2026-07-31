@@ -16,8 +16,7 @@ const createErrorMessage = (user) => {
 
 export const registerUser = async (req, res) => {
   const user = await UserService.addUserInDB(req.body);
-  console.log(user, "user");
-  if (user?.rows?.length) {
+  if (user?.id) {
     res.status(201).json({
       message: "User added successfully",
       status: "success",
