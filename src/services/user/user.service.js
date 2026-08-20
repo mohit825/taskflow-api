@@ -26,6 +26,19 @@ const addUserInDB = async (user) => {
   }
 };
 
+const loginUserInDB = async (email) => {
+  try {
+    const query =
+      "SELECT email, display_name, acc_status, password_hash from users where LOWER(email) = LOWER(($1)) ";
+    const values = [email];
+    const res = await dbPool.query(query, values);
+    console.log(res.rows[0], "res in query");
+  } catch (err) {
+    console.log(err, "err");
+  }
+};
+
 export const UserService = {
   addUserInDB,
+  loginUserInDB,
 };

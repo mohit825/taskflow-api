@@ -28,8 +28,9 @@ const registerUser = async (req, res) => {
   }
 };
 
-const loginUser = (req, res) => {
-  console.log(req.body, "in login user");
+const loginUser = async (req, res) => {
+  const { email } = req.body;
+  const foundUser = await UserService.loginUserInDB(email);
 };
 
 export const UserController = {
