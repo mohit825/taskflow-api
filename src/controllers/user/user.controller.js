@@ -1,4 +1,5 @@
 import { UserService } from "../../services/user/user.service.js";
+import bcrypt from "bcrypt";
 
 const createErrorMessage = (user) => {
   const errObj = {
@@ -29,10 +30,28 @@ const registerUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  const { email } = req.body;
-  const foundUser = await UserService.loginUserInDB(email);
-  if (foundUser.length) {
-    // TODO - add bycrypt logic here then login the user
+  const { email, password } = req.body;
+  const foundUser = await UserService.findUserByEmail(email);
+  console.log(foundUser, "ioio");
+  if (foundUser !== undefined) {
+    const { password_hash } = foundUser;
+    const isPasswordValid = await bcrypt.compare(password, password_hash);
+    if (isPasswordValid) {
+      res.status(200).json({
+        message: "User Authenticated Successfully",
+        status: "true",
+        user: {
+          email: foundUser.email,
+          name: foundUser.display_name,
+          status: foundUser.acc_status,
+        },
+      });
+    } else {
+      res.status(401).json({
+        message: "Provide correct email and password",
+        status: "error",
+      });
+    }
   } else {
     res.status(401).json({
       message: "Provide correct email and password",
