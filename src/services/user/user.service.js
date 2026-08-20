@@ -32,7 +32,7 @@ const loginUserInDB = async (email) => {
       "SELECT email, display_name, acc_status, password_hash from users where LOWER(email) = LOWER(($1)) ";
     const values = [email];
     const res = await dbPool.query(query, values);
-    console.log(res.rows[0], "res in query");
+    return res;
   } catch (err) {
     console.log(err, "err");
   }

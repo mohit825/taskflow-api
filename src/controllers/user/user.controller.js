@@ -31,6 +31,14 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
   const { email } = req.body;
   const foundUser = await UserService.loginUserInDB(email);
+  if (foundUser.length) {
+    // TODO - add bycrypt logic here then login the user
+  } else {
+    res.status(401).json({
+      message: "Provide correct email and password",
+      status: "error",
+    });
+  }
 };
 
 export const UserController = {
