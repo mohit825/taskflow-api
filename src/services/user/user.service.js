@@ -16,7 +16,6 @@ const addUserInDB = async (user) => {
     const res = await dbPool.query(text, values);
     return res?.rows[0];
   } catch (err) {
-    console.log(err, "err");
     if (err?.code == 23505 && err?.severity === "ERROR") {
       return {
         err: "DuplicateErr",
@@ -29,16 +28,27 @@ const addUserInDB = async (user) => {
 const findUserByEmail = async (email) => {
   try {
     const query =
-      "SELECT email, display_name, acc_status, password_hash from users where LOWER(email) = LOWER(($1)) ";
+      "SELECT email, display_name, acc_status, password_hash from users where LOWER(email) = LOWER($1) ";
     const values = [email];
     const res = await dbPool.query(query, values);
     return res.rows[0];
-  } catch (err) {
-    console.log(err, "err");
+  } catch (err) {}
+};
+
+const authenticateUser = async (password, hash) => {
+  try {
+    const isPasswordValid = await bcrypt.compare(password, hash);
+    return isPasswordValid;
+  } catch (error) {
+    res.status(500).json({
+      message: "Something went wrong",
+      status: "error",
+    });
   }
 };
 
 export const UserService = {
   addUserInDB,
   findUserByEmail,
+  authenticateUser,
 };

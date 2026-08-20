@@ -23,7 +23,6 @@ export const loginUserValidation = (req, res, next) => {
     password: z.string().min(1),
   });
   let result = loginUserSchema.safeParse(req.body);
-  console.log(result, req.body, "ress");
   if (!result.success) {
     res.status(400).json({
       status: "Failed",
