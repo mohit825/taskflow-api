@@ -12,4 +12,4 @@
 
 - `created_at` , `updated_at` and `deleted_at` will be a timestamp, these are inserted by system directly.
 
-- Column with uuid datatype cannot be inserted directly, for that we can use function like `gen_random_uuid()` to get the unique id.
+- A UUID column can accept a UUID value directly. `gen_random_uuid()` is used as the database default so PostgreSQL generates the UUID automatically when the application doesn't provide one..

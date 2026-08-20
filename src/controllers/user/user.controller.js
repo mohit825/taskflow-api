@@ -14,7 +14,7 @@ const createErrorMessage = (user) => {
   };
 };
 
-export const registerUser = async (req, res) => {
+const registerUser = async (req, res) => {
   const user = await UserService.addUserInDB(req.body);
   if (user?.id) {
     res.status(201).json({
@@ -28,6 +28,11 @@ export const registerUser = async (req, res) => {
   }
 };
 
+const loginUser = (req, res) => {
+  console.log(req.body, "in login user");
+};
+
 export const UserController = {
   registerUser,
+  loginUser,
 };
