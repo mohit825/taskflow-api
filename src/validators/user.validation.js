@@ -4,7 +4,7 @@ export const registerUserValidation = (req, res, next) => {
   const registeredUserSchema = z.object({
     display_name: z.string().min(3),
     email: z.email(),
-    password_hash: z.string(),
+    password: z.string(),
   });
   let result = registeredUserSchema.safeParse(req.body);
   if (!result.success) {
